@@ -70,7 +70,7 @@ class ResourceCenter:
                 print("") 
                 print("==============================================") 
                 print("Loan an item") 
-                print("==============================================") 
+                print("1==============================================") 
                  
                 print("\nItem types:") 
                 print("1. Digital Camera") 
