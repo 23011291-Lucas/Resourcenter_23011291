@@ -100,10 +100,7 @@ class Inventory():
                 if i.getIsAvailable() == "Yes":
                     # Refactor (D): Extract duplicate code as __str__()
                     # If __str__() already created, use it.
-                    output += "{:<10}{:<30}{:<10}{:<12}{:<10}\n".format( 
-                        i.getAssetTag(), i.getDescription(),  
-                        i.getIsAvailable(), i.getDueDate(), 
-                        i.getOpticalZoom() )
+                    output += str(i)
             
         return output
 
@@ -118,8 +115,5 @@ class Inventory():
                 if i.getIsAvailable() == "Yes":
                     # Refactor (D): Extract duplicate code as __str__()
                     # If __str__() already created, use it.
-                    output += "{:<10}{:<30}{:<10}{:<12}{:<10}\n".format(
-                        i.getAssetTag(), i.getDescription() , 
-                        i.getIsAvailable(), i.getDueDate(), 
-                        i.getOS() )
+                    output += str(i)
         return output
