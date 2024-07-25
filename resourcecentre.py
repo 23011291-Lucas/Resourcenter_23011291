@@ -21,15 +21,22 @@ class ResourceCenter:
         return choice 
  
     def main(self): 
-        # Refactor (A): Extract constants for choice integers 1
-        # Refactor (A): Extract constants for option integers 
+        # Refactor (A): Extract constants for choice integers 
+        CHOICE_ADD = 1
+        CHOICE_VIEW = 2
+        CHOICE_LOAN = 3
+        CHOICE_RETURN = 4
+        CHOICE_QUIT = 5
+        # Refactor (A): Extract constants for option integers
+        OPTION_CAMERA = 1
+        OPTION_LAPTOP = 2
  
         #### Menu driven application #### 
         # Display menu and obtain menu choices 
         choice = self.display_menu() 
  
-        while choice != 5: 
-            if choice == 1: 
+        while choice != CHOICE_QUIT: 
+            if choice == CHOICE_ADD: 
                 assetTag = input("Enter asset tag >") 
                 description = input("Enter description >") 
                  
@@ -38,7 +45,7 @@ class ResourceCenter:
                 print("2. Laptop") 
                 option = int(input("Enter option to select item type >")) 
                  
-                if option == 1: 
+                if option == OPTION_CAMERA: 
                     opticalzoom = int(input("Enter optical zoom >")) 
                     result = self.inventory.addCamera(assetTag, description, opticalzoom) 
                      
@@ -47,7 +54,7 @@ class ResourceCenter:
                     else: 
                         print("Error adding digital camera.") 
                          
-                elif option == 2: 
+                elif option == OPTION_LAPTOP: 
                     os = input("Enter OS >") 
                     result = self.inventory.addLaptop(assetTag, description, os) 
                      
@@ -58,14 +65,14 @@ class ResourceCenter:
                 else: 
                     print("Invalid item type.") 
  
-            elif choice == 2: 
+            elif choice == CHOICE_VIEW: 
                 # Display Inventory 
                 print("\nInventory:") 
                 self.inventory.display() 
                 print(self.inventory.getAvailableCamera()) 
                 print(self.inventory.getAvailableLaptop()) 
                  
-            elif choice == 3: 
+            elif choice == CHOICE_LOAN: 
                 # Loan an item 
                 print("") 
                 print("==============================================") 
@@ -79,7 +86,7 @@ class ResourceCenter:
  
                 # TO-DO: Write the code to LOAN a digital camera or laptop 
  
-            elif choice == 4: 
+            elif choice == CHOICE_RETURN: 
                 # Return an item 
                 print("") 
                 print("==============================================") 
