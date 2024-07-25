@@ -13,4 +13,4 @@ class Camera(Item):
         return self._opticalZoom
         
     def __str__(self):
-        return super().__str__() + "{:<10}\n".format(self.getOpticalZoom() )
+        return super().__str__() + "{:<10}\n".format(self.getOpticalZoom())
