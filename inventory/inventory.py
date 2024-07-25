@@ -128,6 +128,24 @@ class Inventory():
                     output += str(i)
             
         return output
+    
+    def getNotAvailableCamera(self):
+        output = ""
+        output += "{:<10}{:<30}{:<10}{:<12}{:<10}\n".format("AssetTag", 
+                    "Description", "Available", "Due Date", "Zoom")
+        if len(self.cameraList) == 0:
+            output += "There is no camera to display."
+        else:
+            for i in self.cameraList:
+                if i.getIsAvailable() == "No":
+                    # Refactor (D): Extract duplicate code as __str__()
+                    # If __str__() already created, use it.
+                    output += "{:<10}{:<30}{:<10}{:<12}{:<10}\n".format( 
+                        i.getAssetTag(), i.getDescription(),  
+                        i.getIsAvailable(), i.getDueDate(), 
+                        i.getOpticalZoom() )
+            
+        return output
 
     def getAvailableLaptop(self):
         output = ""
@@ -142,6 +160,24 @@ class Inventory():
                     # If __str__() already created, use it.
                     output += str(i)
         return output
+
+    def getNotAvailableLaptop(self):
+        output = ""
+        output += "{:<10}{:<30}{:<10}{:<12}{:<10}\n".format("AssetTag", 
+                    "Description", "Available", "Due Date", "OS")
+        if len(self.laptopList) == 0:
+            output += "There is no laptop to display."
+        else:
+            for i in self.laptopList:
+                if i.getIsAvailable() == "Not":
+                    # Refactor (D): Extract duplicate code as __str__()
+                    # If __str__() already created, use it.
+                    output += "{:<10}{:<30}{:<10}{:<12}{:<10}\n".format(
+                        i.getAssetTag(), i.getDescription() , 
+                        i.getIsAvailable(), i.getDueDate(), 
+                        i.getOS() )
+        return output
+
     def loanAsset(self, assetTag, dueDate): 
         success = False 
         if len(assetTag) > 0 and len(dueDate) > 0: 

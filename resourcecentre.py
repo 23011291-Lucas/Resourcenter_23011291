@@ -140,43 +140,32 @@ class ResourceCenter:
                 if option == OPTION_CAMERA:
                     # Refactor (F): create and use proper method to display loaned camera.
                     # Don't forget to create a pytest for this new method.
-                    print("{:<10}{:<30}{:<10}{:<12}{:<10}".format("AssetTag", 
-                          "Description", "Available", "Due Date", "Zoom"))
-                    for i in self.inventory.cameraList:
-                        if i.getIsAvailable() == "No":
-                            print("{:<10}{:<30}{:<10}{:<12}{:<10}".format(i.getAssetTag(), \
-                            i.getDescription() , i.getIsAvailable(), i.getDueDate(), i.getOpticalZoom()))
+                    print(self.inventory.getAvailableCamera())
+                    
+                    assertTag = input("Enter assert tag >")
 
-                    assetTag = input("Enter asset tag >")
-
-                    result = self.inventory.returnCamera(assetTag)
+                    result = self.inventory.returnCamera(assertTag)
 
                     if result:
-                        print("Camera",assetTag,"successfully returned.")
+                        print("Camera", assertTag, "successfullt returned.")
                     else:
                         print("Error returning camera.")
                         
                 elif option == OPTION_LAPTOP:
                     # Refactor (F): create and use proper method to display loaned Laptop.
                     # Don't forget to create a pytest for this new method.
-                    print("{:<10}{:<30}{:<10}{:<12}{:<10}".format("AssetTag", 
-                          "Description", "Available", "Due Date", "OS"))
-                    for i in self.inventory.laptopList:
-                        if i.getIsAvailable() == "No":
-                            print("{:<10}{:<30}{:<10}{:<12}{:<10}".format(i.getAssetTag(), \
-                            i.getDescription() , i.getIsAvailable(), i.getDueDate(), i.getOs() ))
+                    print(self.inventory.getNotAvailableLaptop())
 
-                    assetTag = input("Enter asset tag >")
+                    assertTag = input("Enter assert tag >")
 
-                    result = self.inventory.returnLaptop(assetTag)
-
+                    result = self.inventory.returnLaptop(assertTag)
+                    
                     if result:
-                        print("Laptop",assetTag,"successfully returned.")
+                        print("Laptop", assertTag,"successfully returned.")
                     else:
                         print("Error returning laptop.")
-                else:
+                else: 
                     print("Invalid item type.")
-
             else:
                 print("Invalid choice.")
             
