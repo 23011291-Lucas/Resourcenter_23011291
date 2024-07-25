@@ -26,3 +26,10 @@ class Camera():
         self._dueDate = dueDate
     def setIsAvailable(self, isAvailable):
         self._isAvailable = isAvailable
+    
+    def _str_(self):
+        return "{:<10}{:<30}{:<10}{:<12}{:<10}\n".format( 
+                        self.getAssetTag(), self.getDescription(),  
+                        self.getIsAvailable(), self.getDueDate(), 
+                        self.getOpticalZoom() )
+        
